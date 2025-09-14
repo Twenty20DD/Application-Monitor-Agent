@@ -1,0 +1,42 @@
+{
+  "name": "twenty20/application-monitor-agent",
+  "description": "Monitor cron and queue uptime.",
+  "keywords": ["laravel", "Twenty20", "monitor", "agent"],
+  "homepage": "https://github.com/twenty20/application-monitor-agent",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Twenty20",
+      "email": "dev@twenty20.co.uk",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Twenty20\\ApplicationMonitorAgent\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Twenty20\\ApplicationMonitorAgent\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Twenty20\\ApplicationMonitorAgent\\ApplicationMonitorAgentServiceProvider"
+      ],
+      "aliases": {
+        "ApplicationMonitorAgent": "Twenty20\\ApplicationMonitorAgent\\Facades\\Mailer"
+      }
+    }
+  },
+  "require": {
+    "php": "^8.1",
+    "illuminate/support": "^10.0|^11.0|^12.0",
+    "illuminate/console": "^10.0|^11.0|^12.0",
+    "illuminate/http": "^10.0|^11.0|^12.0",
+    "illuminate/queue": "^10.0|^11.0|^12.0",
+    "illuminate/bus": "^10.0|^11.0|^12.0"
+  }
+}
