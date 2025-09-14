@@ -27,7 +27,7 @@ class ApplicationMonitorAgentServiceProvider extends ServiceProvider
 
         $this->app->booted(function () {
             $schedule = $this->app->make(Schedule::class);
-            $schedule->command('application-monitor-agent:run-agent')->everyFiveMinutes();
+            $schedule->command('application-monitor-agent:run-agent')->onOneServer()->withoutOverlapping()->everyFiveMinutes();
         });
     }
 }
