@@ -3,6 +3,7 @@
 namespace Twenty20\ApplicationMonitorAgent\Http;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Twenty20\ApplicationMonitorAgent\Enums\EventType;
 
 class ApplicationMonitorApi
@@ -31,9 +32,13 @@ class ApplicationMonitorApi
             $url .= '/queue-event';
         }
 
-        Http::post($url, [
+        $responseStatus = Http::post($url, [
             'site_id' => config('application-monitor-agent.site_id'),
             'key' => config('application-monitor-agent.key'),
-        ]);
+        ])->status();
+
+        if(config('application-monitor-agent.debugging_enabled')) {
+            Log::info("Application Monitor Agent $eventType->name status: $responseStatus");
+        }
     }
 }
