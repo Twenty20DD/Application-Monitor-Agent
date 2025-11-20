@@ -13,7 +13,7 @@ class SendSchedulerEvent extends Command
     protected $signature = 'application-monitor-agent:run-agent';
     protected $description = 'Run the Application Monitor Agent';
 
-    public function handle()
+    public function handle(): void
     {
         ApplicationMonitorApi::sendEvent(EventType::Scheduler);
 
